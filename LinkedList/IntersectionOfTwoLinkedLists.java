@@ -37,3 +37,36 @@ public class Solution {
 
 
 //OPTIMIZED SOLUTION
+public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        int lenA = 0;
+        int lenB = 0;
+        ListNode curr = headA;
+        while(curr!=null){
+            //ListNode curr = headA;
+            curr = curr.next;
+            lenA++;
+        }
+        curr = headB;
+        while(curr!=null){
+           // ListNode curr = headB;
+            curr = curr.next;
+            lenB++;
+        }
+            if(lenA>lenB){
+            while(lenA!=lenB){
+                headA = headA.next;
+                lenA--;
+            }
+            }
+        if(lenA<lenB){
+            while(lenA!=lenB){
+                headB = headB.next;
+                lenB--;
+            }
+        }
+        while(headA!=headB){
+            headA = headA.next;
+            headB = headB.next;
+        }
+        return headA;
+    }
